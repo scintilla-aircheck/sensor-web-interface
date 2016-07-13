@@ -1,0 +1,134 @@
+<html>
+<head>
+    <title>
+        Scintilla Setup Page
+    </title>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="build/css/main.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="javascript/main.js"></script>
+
+    <style>
+        @font-face {
+            font-family: "Roboto-Light";
+            src: url(fonts/Roboto-Light.ttf) format("truetype");
+        }
+        @font-face {
+            font-family: "Roboto-Regular";
+            src: url(fonts/Roboto-Regular.ttf) format("truetype");
+        }
+        @font-face {
+            font-family: "Roboto-Medium";
+            src: url(fonts/Roboto-Medium.ttf) format("truetype");
+        }
+        @font-face {
+            font-family: "Roboto-Bold";
+            src: url(fonts/Roboto-Bold.ttf) format("truetype");
+        }
+        @font-face {
+            font-family: "Roboto-Black";
+            src: url(fonts/Roboto-Black.ttf) format("truetype");
+        }
+        @font-face {
+            font-family: "FontAwesome";
+            src: url(fonts/fontawesome-webfont.ttf) format("truetype");
+        }
+    </style>
+</head>
+<body>
+
+<div id="page_container">
+    <div id="page">
+        <div class="nav_container">
+            <div class="nav_title">
+                Scintilla Setup Page
+            </div>
+            <button class="nav_save_button_container">
+                <div class="nav_save_button_text">
+                    Save
+                </div>
+            </button>
+        </div>
+        <div class="nav_spacer">
+
+        </div>
+        <div class="content_container">
+            <form class="content">
+                <div class="content_section">
+                    <div class="section_title">
+                        Sensor Read Rate
+                    </div>
+                    <div class="section_content_container">
+                        <div class="section_content_text"><strong>XX</strong> readings taken in the last 24 hours</div>
+                        <div class="sensor_read_rate_container">
+                            <div class="sensor_read_rate_header">
+                                <div class="sensor_read_rate_header_title">Take a reading every:</div>
+                            </div>
+                            <div class="sensor_read_rate">
+                                <div class="sensor_read_rate_label_container">
+                                    <div class="sensor_read_rate_label">
+                                        1min
+                                    </div>
+                                    <div class="sensor_read_rate_label">
+                                        5min
+                                    </div>
+                                    <div class="sensor_read_rate_label">
+                                        15min
+                                    </div>
+                                    <div class="sensor_read_rate_label">
+                                        30min
+                                    </div>
+                                    <div class="sensor_read_rate_label">
+                                        1hour
+                                    </div>
+                                </div>
+                                <div class="sensor_read_rate_input_container">
+                                    <input class="sensor_read_rate_input" type="radio" name="sensor_read_rate" value="1" checked="true" />
+                                    <input class="sensor_read_rate_input" type="radio" name="sensor_read_rate" value="5" checked="false" />
+                                    <input class="sensor_read_rate_input" type="radio" name="sensor_read_rate" value="15" checked="false" />
+                                    <input class="sensor_read_rate_input" type="radio" name="sensor_read_rate" value="30" checked="false" />
+                                    <input class="sensor_read_rate_input" type="radio" name="sensor_read_rate" value="60" checked="false" />
+                                </div>
+                            </div>
+                            <div class="sensor_read_rate_header">
+                                <div class="sensor_read_rate_header_title">Battery life:</div>
+                                <div class="sensor_read_rate_header_right_text">~3 days</div>
+                            </div>
+                            <div class="battery_life_container">
+                                <div class="battery_life">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content_section">
+                    <div class="section_title">
+                        API Key
+                    </div>
+                    <div class="section_content_container">
+                        <input class="content_input" type="text" name="api_key" placeholder="********************" />
+                    </div>
+                </div>
+                <div class="content_section">
+                    <div class="section_title">
+                        WiFi
+                    </div>
+                    <div class="section_content_container">
+                        <input class="content_input" type="text" name="ssid" placeholder="SSID" />
+                        <input class="content_input" type="password" name="password" placeholder="Password" />
+                        <div class="section_content_text">Connectivity Status: <strong>Connected</strong></div>
+                    </div>
+                </div>
+                <button class="content_save_button">
+                    Save
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+@import "compass/reset";
+@import "../bower_components/include-media/dist/_include-media";
+
+// ----------------------------------------------------------------------
+// Font Families
+// ----------------------------------------------------------------------
+
+$font-light: Roboto-Light;
+$font-regular: Roboto-Regular;
+$font-medium: Roboto-Medium;
+$font-bold: Roboto-Bold;
+$font-black: Roboto-Black;
+
+// ----------------------------------------------------------------------
+// Colors
+// ----------------------------------------------------------------------
+
+$pure-white: #FFFFFF;
+$pure-black: #000000;
+
+$black: #000707;
+$darkest-grey: #272F2F;
+$darker-grey: #4A5353;
+$dark-grey: #7C8484;
+$grey: #AEB5B5;
+$light-grey: #C8CDCD;
+$lighter-grey: #E0E5E5;
+$white: #F0F5F5;
+
+$teal: #00A99D;
+$light-teal: #10CDBF;
+$magenta: #EA07FC;
+$purple: #BB07FC;
+$orange: #E75D29;
+$blue: #27ABE0;
+$yellow: #F5B907;
+$red: #DC0145;
+
+// ----------------------------------------------------------------------
+// Generic Styles
+// ----------------------------------------------------------------------
+
+strong {
+  font-family: $font-bold;
+}
+
+button {
+  background: none;
+  border: 0;
+  color: inherit;
+  /* cursor: default; */
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-appearance: button; /* for input */
+  -webkit-user-select: none; /* for button */
+     -moz-user-select: none;
+      -ms-user-select: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  outline: none;
+}
+
+input[type="radio"] {
+  margin: 0px;
+}
+
+input:focus {
+  outline: none;
+}
+
+:invalid {
+  box-shadow: none;
+}
+
+:-moz-submit-invalid {
+  box-shadow: none;
+}
+
+:-moz-ui-invalid {
+  box-shadow:none;
+}
+
+// ----------------------------------------------------------------------
+// Z-index
+// ----------------------------------------------------------------------
+
+$modal-content: 10040;
+$modal-overlay: 10030;
+$header-container: 10020;
+$tooltip-triangle: 10013;
+$tooltip-content: 10012;
+$tooltip-container: 10011;
+$very-top: 10000;
+$top: 100;
+$just-above: 10;
+$middle: auto;
+$just-below: -10;
+$bottom: -100;
+$very-bottom: -10000;
+$page: -100000;
+
+// ----------------------------------------------------------------------
+// Mixins
+// ----------------------------------------------------------------------
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content
+  }
+  :-moz-placeholder {
+    @content
+  }
+  ::-moz-placeholder {
+    @content
+  }
+  :-ms-input-placeholder {
+    @content
+  }
+}
+
+@mixin background-clip($args...) {
+  -moz-background-clip: $args;     /* Firefox 3.6 */
+  -webkit-background-clip: $args;  /* Safari 4? Chrome 6? */
+  background-clip: $args + '-box';      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transform($args...) {
+  -webkit-transform: $args;
+  -moz-transform: $args;
+  -ms-transform: $args;
+  -o-transform: $args;
+  transform: $args;
+}
+
+@mixin flexbox-display-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flexbox-flex-direction($arg) {
+  -webkit-flex-direction: $arg;
+  -moz-flex-direction: $arg;
+  -ms-flex-direction: $arg;
+  flex-direction: $arg;
+}
+
+@mixin flexbox-flex-wrap($arg) {
+  -webkit-flex-wrap: $arg;
+  -moz-flex-wrap: $arg;
+  -ms-flex-wrap: $arg;
+  flex-wrap: $arg;
+}
+
+@mixin flexbox-justify-content($arg) {
+  -webkit-justify-content: $arg;
+  -moz-justify-content: $arg;
+  -ms-justify-content: $arg;
+  justify-content: $arg;
+}
+
+@mixin flexbox-align-items($arg) {
+  -webkit-align-items: $arg;
+  -moz-align-items: $arg;
+  -ms-align-items: $arg;
+  align-items: $arg;
+}
+
+@mixin flexbox-shrink($arg) {
+  -webkit-flex-shrink: $arg;
+  flex-shrink: $arg;
+}
+
+// ----------------------------------------------------------------------
+// Layout
+// ----------------------------------------------------------------------
+
+html {
+  height: 100%;
+  position: relative;
+  z-index: $very-bottom;
+}
+
+body {
+  height: 100%;
+  position: relative;
+  z-index: $very-bottom;
+  margin: 0px;
+}
+
+#page_container {
+  @include flexbox-display-flex();
+  @include flexbox-justify-content(center);
+  position: relative;
+  z-index: $page;
+  min-height: 100%;
+  background-color: $white;
+}
+
+#page {
+  width: 100%;
+  background-color: $white;
+  overflow-x: hidden;
+  position: relative;
+  z-index: $page;
+
+  @include media(">tablet", "<=1300px") {
+    position: absolute;
+    left: 0px;
+  }
+
+  @include media("<=tablet") {
+
+  }
+}
+
+// ----------------------------------------------------------------------
+// Styles
+// ----------------------------------------------------------------------
+
+.nav_container {
+  @include flexbox-display-flex();
+  @include flexbox-justify-content(center);
+  @include flexbox-align-items(center);
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  box-sizing: border-box;
+  border-bottom: 1px solid $black;
+
+  @include media("<=tablet") {
+    @include flexbox-justify-content(flex-start);
+    height: 18vw;
+    padding: 3vw;
+  }
+
+  .nav_title {
+    font-family: $font-bold;
+    font-size: 48px;
+    color: $red;
+
+    @include media("<=tablet") {
+      font-size: 7.5vw;
+    }
+  }
+}
+
+.nav_save_button_container {
+  @include flexbox-display-flex();
+  @include flexbox-justify-content(center);
+  @include flexbox-align-items(center);
+  width: 120px;
+  height: 80px;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  box-sizing: border-box;
+  border-left: 1px solid $black;
+
+  @include media("<=tablet") {
+    width: 25vw;
+    height: 18vw;
+  }
+
+  .nav_save_button_text {
+    font-family: $font-bold;
+    font-size: 24px;
+    color: $red;
+
+    @include media("<=tablet") {
+      font-size: 7.5vw;
+    }
+  }
+}
+
+.nav_spacer {
+  height: 160px;
+}
+
+.content_container {
+  @include flexbox-display-flex();
+  @include flexbox-flex-direction(column);
+  @include flexbox-justify-content(flex-start);
+  @include flexbox-align-items(center);
+  width: 100%;
+
+  .content {
+    @include flexbox-display-flex();
+    @include flexbox-flex-direction(column);
+    @include flexbox-justify-content(flex-start);
+    @include flexbox-align-items(center);
+    box-sizing: border-box;
+    border: 1px solid $black;
+    width: 100%;
+    max-width: 600px;
+
+    .content_section {
+      @include flexbox-display-flex();
+      @include flexbox-flex-direction(column);
+      @include flexbox-justify-content(flex-start);
+      @include flexbox-align-items(flex-start);
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+
+      .section_title {
+        font-family: $font-bold;
+        font-size: 36px;
+        color: $black;
+      }
+
+      .section_content_container {
+        @include flexbox-display-flex();
+        @include flexbox-flex-direction(column);
+        @include flexbox-justify-content(flex-start);
+        @include flexbox-align-items(flex-start);
+        width: 100%;
+
+        .content_input {
+          font-family: $font-regular;
+        }
+
+        .section_content_text {
+          font-family: $font-regular;
+        }
+
+        .sensor_read_rate_container {
+          width: 80%;
+
+          .sensor_read_rate_header {
+            @include flexbox-display-flex();
+            @include flexbox-justify-content(space-between);
+            @include flexbox-align-items(flex-start);
+
+            .sensor_read_rate_header_title {
+              font-family: $font-regular;
+            }
+
+            .sensor_read_rate_header_right_text {
+              font-family: $font-regular;
+            }
+          }
+
+          .sensor_read_rate {
+            .sensor_read_rate_label_container {
+              @include flexbox-display-flex();
+              @include flexbox-justify-content(space-between);
+              @include flexbox-align-items(flex-start);
+
+              .sensor_read_rate_label {
+                font-family: $font-regular;
+              }
+            }
+
+            .sensor_read_rate_input_container {
+              @include flexbox-display-flex();
+              @include flexbox-justify-content(space-between);
+              @include flexbox-align-items(flex-start);
+              padding-left: 10px;
+              padding-right: 10px;
+
+              .sensor_read_rate_input {
+
+                &:checked {
+
+                }
+              }
+            }
+          }
+
+          .battery_life_container {
+            .battery_life {
+
+            }
+          }
+        }
+      }
+    }
+
+    .content_save_button {
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      vertical-align: middle;
+      font-family: $font-bold;
+      font-size: 24px;
+      color: $red;
+    }
+  }
+}
